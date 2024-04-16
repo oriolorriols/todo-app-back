@@ -1,3 +1,9 @@
+npm install mongoose
+npm install dotenv
+npm install cors
+npm install express
+
+
 # todo-app-backend
 
 ## Endpoints
