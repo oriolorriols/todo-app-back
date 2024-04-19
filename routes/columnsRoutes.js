@@ -1,11 +1,13 @@
 const { Router } = require('express')
-const { getColumns, addColumn} = require('../controllers/columnController')
+const { getColumns, addColumn, deleteColumn, updateColumn} = require('../controllers/columnController')
 
 const columnRouter = Router()
 
  
 columnRouter.get("/", getColumns)
 columnRouter.post("/", addColumn)
+columnRouter.delete("/:id", deleteColumn)
+columnRouter.put("/:id", updateColumn)
 
 
 

@@ -1,17 +1,15 @@
 const columnOrderModel = require('../models/columnorder.model')
 
 const getColumnOrder = async (req, res) => {
-    const allColumns = await columnOrderModel.find()
-    console.log('get')
-    res.json(allColumns)
+    const order = await columnOrderModel.find()
+    res.status(202).json(order)
 }
 
-
-const addOrderedColumn = (req, res) => {
-    console.log(req.body)
-    columnOrderModel.create(req.body)
-    .then(column => res.json(column))
-    .catch(err => res.status(500).json(err.errorResponse.errmsg))
+const updateOrderedColumn = (req, res) => {
+    const data = req.body
+    columnOrderModel.findOneAndUpdate({}, data, {new: true})
+    .then(order => res.status(202).json(order))
+    .catch(err => res.status(500).json(err))
 }
 
-module.exports = { getColumnOrder, addOrderedColumn }  
+module.exports = { getColumnOrder, updateOrderedColumn }  

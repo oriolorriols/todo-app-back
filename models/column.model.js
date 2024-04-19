@@ -11,7 +11,7 @@ const columnSchema = new Schema({
     type: String,
     required: true
     },
-    taskIds: {
+  taskIds: {
     type: [String],
     required: true
     },
