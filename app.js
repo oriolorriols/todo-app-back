@@ -29,7 +29,7 @@ const { columnOrderRouter } = require("./routes/columnOrderRoutes");
 
 
 app.use('/tasks', taskRouter)
-app.use('/column', columnRouter)
+app.use('/columns', columnRouter)
 app.use('/ordercolumns', columnOrderRouter)
 
 

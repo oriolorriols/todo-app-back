@@ -1,12 +1,12 @@
 const { Router } = require('express')
-const { getColumnOrder, updateOrderedColumn} = require('../controllers/columnOrderController')
+const { getColumnOrder, updateOrderedColumn, createOrderedColumn} = require('../controllers/columnOrderController')
 
 const columnOrderRouter = Router()
 
  
 columnOrderRouter.get("/", getColumnOrder)
 columnOrderRouter.put("/", updateOrderedColumn)
-
+columnOrderRouter.post("/", createOrderedColumn)
 
 
 

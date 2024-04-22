@@ -2,6 +2,7 @@ const columnModel = require('../models/column.model')
 
 const getColumns = async (req, res) => {
     const allColumns = await columnModel.find()
+    console.log('get columns')
     res.status(202).json(allColumns)
 }
 
