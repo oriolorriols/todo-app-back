@@ -1,5 +1,7 @@
 const taskModel = require('../models/task.model')
 
+const schedule = require('node-schedule')
+
 const getTasks = async (req, res) => {
     const allTasks = await taskModel.find()
     console.log('get tasks')
@@ -35,5 +37,19 @@ const deleteTask = (req, res) => {
         })
     .catch(err => res.status(500).json(err))
 }
+
+async function backendBot(req, res) {
+    try {
+        const response = await fetch('https://todo-app-back-20dl.onrender.com/tasks')
+        const data = await response.json();
+        console.log('El bot está fucionando cada 15 min');
+    } catch (error) {
+        console.log('Error: ', error);
+    }
+}
+
+schedule.scheduleJob('*/15 * * * *', async () => { 
+    await backendBot();
+});
 
 module.exports = { getTasks, addTask, getTasksbyID, deleteTask, updateTask }  
